@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block title %}document{% endblock %}
+
+{% block content %}
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            /* max-width: 1200px; */
+        }
+
+        header {
+            background-color: #8B0000;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details h2 {
+            font-size: 1.5rem;
+            color: #8B0000;
+            margin: 15px auto;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .back {
+            display: inline-block;
+            background-color: #A00050;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 0 45%;
+            transition: background-color 0.3s ease;
+        }
+
+        .back:hover {
+            background-color: #800040;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .product-details h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+
+
+  <header>
+    <div class="container">
+      <h1>White Quality Wine</h1>
+      <p>Experience the finest white wines from around the world</p>
+    </div>
+  </header>
+
+  <section class="product-grid container">
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/chardonnay.jpg" alt="Chardonnay">
+      </div>
+      <div class="product-details">
+        <h2>Chardonnay</h2>
+        <p>A rich, full-bodied white wine with flavors of tropical fruits, vanilla, and a touch of oak.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/sauvignonblanc.webp" alt="Sauvignon Blanc">
+      </div>
+      <div class="product-details">
+        <h2>Sauvignon Blanc</h2>
+        <p>A crisp, refreshing white wine with vibrant citrus flavors and hints of grass and herbs.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/pinotgrigio.jpg" alt="Pinot Grigio" >
+      </div>
+      <div class="product-details">
+        <h2>Pinot Grigio</h2>
+        <p>A light and crisp white wine known for its clean citrus flavors and smooth texture.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/riesling.jpg" alt="Riesling" >
+      </div>
+      <div class="product-details">
+        <h2>Riesling</h2>
+        <p>Riesling is known for its aromatic bouquet of stone fruits and a balanced sweet-tart flavor profile.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/gewurztraminer.jpg" alt="Gewürztraminer" >
+      </div>
+      <div class="product-details">
+        <h2>Gewürztraminer</h2>
+        <p>This aromatic wine has flavors of lychee, ginger, and spices, offering a unique and bold taste.</p>
+      </div>
+    </div>
+  </section>
+<div class="container">
+  <a href="/winepark" class="back">Back</a>
+</div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 White Quality Wine. All rights reserved.</p>
+    </div>
+  </footer>
+
+{% endblock %}

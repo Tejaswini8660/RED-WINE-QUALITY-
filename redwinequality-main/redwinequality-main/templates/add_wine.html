@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Wine Details{% endblock %}
+
+{% block content %}
+    <style>
+        /* General styling for body */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #FAEBD7; /* Soft beige, resembling a wine cellar atmosphere */
+        }
+
+        /* Styling the form container */
+        form {
+            background-color: #F5F5DC; /* Light beige for elegance */
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            max-width: 400px;
+            width: 100%;
+            margin: 50px auto;
+        }
+
+        /* Header styling with red wine quality theme */
+        h2 {
+            text-align: center;
+            color: #800000; /* Deep red for wine elegance */
+            margin-bottom: 20px;
+            font-size: 26px;
+            font-family: 'Garamond', serif;
+            text-transform: uppercase;
+        }
+
+        /* Input and label styling */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4B1C1C; /* Dark burgundy text color */
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #D3B5B5; /* Subtle burgundy border */
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: #FFF5F5; /* Soft pink hint */
+            color: #4B1C1C; /* Matches label */
+        }
+
+        input:focus {
+            border-color: #800000; /* Red wine theme for focus */
+            outline: none;
+            box-shadow: 0 0 8px rgba(128, 0, 0, 0.6);
+        }
+
+        /* Submit button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #800000; /* Deep red for wine quality */
+            color: #FAF5E6; /* Light beige text for contrast */
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4B1C1C; /* Dark burgundy for hover */
+            color: #FFD700; /* Gold for elegance */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            form {
+                padding: 15px 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+
+    <h2>Red Wine Information Form</h2>
+    <form action="/submit" method="POST">
+<!--        <label for="id">Wine ID:</label>-->
+<!--        <input type="number" id="id" name="id" placeholder="Enter Wine ID" min="0" step="any" required>-->
+
+        <label for="fixed_acidity">Fixed Acidity:</label>
+        <input type="number" id="fixed_acidity" name="fixed_acidity" placeholder="Enter Fixed Acidity" step="any" required>
+
+        <label for="volatile_acidity">Volatile Acidity:</label>
+        <input type="number" id="volatile_acidity" name="volatile_acidity" placeholder="Enter Volatile Acidity" step="any" required>
+
+        <label for="citric_acid">Citric Acid:</label>
+        <input type="number" id="citric_acid" name="citric_acid" placeholder="Enter Citric Acid" step="any" required>
+
+        <label for="residual_sugar">Residual Sugar:</label>
+        <input type="number" id="residual_sugar" name="residual_sugar" placeholder="Enter Residual Sugar" step="any" required>
+
+        <label for="chlorides">Chlorides:</label>
+        <input type="number" id="chlorides" name="chlorides" placeholder="Enter Chlorides" step="any" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const fields = [
+                { id: "fixed_acidity", min: 4.6, max: 15.9, msg: "Fixed Acidity must be between 4.6 and 15.9." },
+                { id: "volatile_acidity", min: 0, max: 1.2, msg: "Volatile Acidity must be between 0 and 1.2." },
+                { id: "citric_acid", min: 0.04, max: 0.7, msg: "Citric Acid must be between 0.04 and 0.7." },
+                { id: "residual_sugar", min: 1, max: 11, msg: "Residual Sugar must be between 1 and 11." },
+                { id: "chlorides", min: 0, max: 500, msg: "Chlorides must be between 0 and 500." }
+            ];
+
+            fields.forEach(field => {
+                const input = document.getElementById(field.id);
+                const errorMessage = document.createElement("small");
+                errorMessage.style.color = "red";
+                errorMessage.style.display = "none";
+                errorMessage.style.fontSize = "12px";
+                errorMessage.style.lineHeight = "1px";
+                errorMessage.style.paddingBottom = "15px";
+                input.insertAdjacentElement('afterend', errorMessage);
+                field.errorElement = errorMessage;
+
+                input.addEventListener("input", function () {
+                    errorMessage.style.display = "none";
+                });
+            });
+
+            form.addEventListener("submit", function (event) {
+                let isValid = true;
+                fields.forEach(field => {
+                    const input = document.getElementById(field.id);
+                    const value = parseFloat(input.value);
+
+                    if (isNaN(value) || value < field.min || value > field.max) {
+                        isValid = false;
+                        field.errorElement.textContent = field.msg;
+                        field.errorElement.style.display = "block";
+                        input.focus();
+                    } else {
+                        field.errorElement.style.display = "none";
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

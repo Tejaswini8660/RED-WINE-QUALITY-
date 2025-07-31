@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block title %}document{% endblock %}
+
+{% block content %}
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            /* max-width: 1200px; */
+        }
+
+        header {
+            background-color: #8B0000;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details h2 {
+            font-size: 1.5rem;
+            color: #8B0000;
+            margin: 15px auto;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .back {
+            display: inline-block;
+            background-color: #A00050;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 0 45%;
+            transition: background-color 0.3s ease;
+        }
+
+        .back:hover {
+            background-color: #800040;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .product-details h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+
+
+  <header>
+    <div class="container">
+      <h1>Sweet Quality Wine</h1>
+      <p>Indulge in the finest sweet wines from around the world</p>
+    </div>
+  </header>
+
+  <section class="product-grid container">
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/mascatodasti.jpg" alt="Moscato d'Asti">
+      </div>
+      <div class="product-details">
+        <h2>Moscato d'Asti</h2>
+        <p>A fragrant and aromatic sweet wine with notes of peach, apricot, and honey. Perfect for dessert.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/sauternes.jpg" alt="Sauternes" >
+      </div>
+      <div class="product-details">
+        <h2>Sauternes</h2>
+        <p>This legendary sweet French wine features flavors of ripe apricot, honey, and a rich, silky finish.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/sweetriesling.jpg" alt="Sweet Riesling" >
+      </div>
+      <div class="product-details">
+        <h2>Sweet Riesling</h2>
+        <p>A sweet, well-balanced wine with luscious fruit flavors of peach, citrus, and a touch of honeyed sweetness.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/icewine.jpg" alt="Ice Wine">
+      </div>
+      <div class="product-details">
+        <h2>Ice Wine</h2>
+        <p>A rare and luxurious wine made from frozen grapes, offering intense flavors of apricot, honey, and tropical fruits.</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img src="/static/tokaji.jpg" alt="Tokaji" >
+      </div>
+      <div class="product-details">
+        <h2>Tokaji</h2>
+        <p>This Hungarian dessert wine is famous for its balance of sweetness and acidity, with flavors of honey, orange, and spice.</p>
+      </div>
+    </div>
+  </section>
+<div class="container">
+  <a href="/winepark" class="back">Back</a>
+</div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Sweet Quality Wine. All rights reserved.</p>
+    </div>
+  </footer>
+
+{% endblock %}

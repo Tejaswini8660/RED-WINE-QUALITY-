@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Dynamic Dashboard{% endblock %}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<h1 style="text-align: center;">Dynamic Wine Analysis Dashboard</h1>
+
+<div style="width: 90%; margin: auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+
+    <!-- Fixed Acidity Chart -->
+    <div style="width: 45%;">
+        <canvas id="fixedAcidityChart"></canvas>
+    </div>
+
+    <!-- Volatile Acidity Chart -->
+    <div style="width: 45%;">
+        <canvas id="volatileAcidityChart"></canvas>
+    </div>
+
+    <!-- Residual Sugar Chart -->
+    <div style="width: 45%;">
+        <canvas id="residualSugarChart"></canvas>
+    </div>
+
+    <!-- Citric Acid Chart -->
+    <div style="width: 45%;">
+        <canvas id="citricAcidChart"></canvas>
+    </div>
+
+    <!-- Chlorides Chart -->
+    <div style="width: 45%;">
+        <canvas id="chloridesChart"></canvas>
+    </div>
+
+</div>
+
+<script>
+    const data = {{ data|tojson }};
+
+    // Chart.js config function
+    function createChart(ctx, labels, datasetLabel, data, color) {
+        return new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: datasetLabel,
+                    data: data,
+                    backgroundColor: color,
+                    borderColor: color,
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true },
+                    x: { title: { display: true, text: 'Wine ID' } }
+                }
+            }
+        });
+    }
+
+    // Render Charts
+    createChart(
+        document.getElementById('fixedAcidityChart'),
+        data.ids,
+        'Fixed Acidity',
+        data.fixed_acidity,
+        'rgba(205, 92, 92, 0.6)'
+    );
+
+    createChart(
+        document.getElementById('volatileAcidityChart'),
+        data.ids,
+        'Volatile Acidity',
+        data.volatile_acidity,
+        'rgba(72, 61, 139, 0.6)'
+    );
+
+    createChart(
+        document.getElementById('residualSugarChart'),
+        data.ids,
+        'Residual Sugar',
+        data.residual_sugar,
+        'rgba(46, 139, 87, 0.6)'
+    );
+
+    createChart(
+        document.getElementById('citricAcidChart'),
+        data.ids,
+        'Citric Acid',
+        data.citric_acid,
+        'rgba(255, 140, 0, 0.6)'
+    );
+
+    createChart(
+        document.getElementById('chloridesChart'),
+        data.ids,
+        'Chlorides',
+        data.chlorides,
+        'rgba(70, 130, 180, 0.6)'
+    );
+</script>
+
+{% endblock %}

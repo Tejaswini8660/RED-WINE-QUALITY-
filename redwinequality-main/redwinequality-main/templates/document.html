@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %}document{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background-color: #f5f5f5; /* Neutral background */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .allwine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center the content */
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .allwine h1 {
+    font-size: 1.5rem;
+    color: #333; /* Dark gray for professional text color */
+    text-align: center;
+    margin: 10px 0;
+    border-bottom: 2px solid #e74c3c; /* Subtle underline for headings */
+  }
+
+  .allwine ul {
+    list-style-type: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+  }
+
+  .allwine ul li {
+    font-size: 1rem;
+    color: #555; /* Slightly lighter gray for list items */
+    padding: 5px 0;
+  }
+
+  .allwine ul li:hover {
+    color: #e74c3c; /* Red hover effect */
+    cursor: pointer; /* Indicate clickable items */
+  }
+
+  .allwine div {
+    flex: 1 1 300px; /* Make items responsive */
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd; /* Light border for separation */
+    border-radius: 10px; /* Soft corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .allwine div:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+  }
+    header .logo span {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color:white;
+}
+</style>
+
+
+
+ <div class="allwine">
+    <div>
+      <h1>Red Wine</h1>
+      <ul>
+        <li>Cabernet Sauvignon</li>
+        <li>Pinot Noir</li>
+        <li>Merlot</li>
+        <li>Pinotage</li>
+        <li>Camenere</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>White Wine</h1>
+      <ul>
+        <li>Chardonnay</li>
+        <li>Sauvignon</li>
+        <li>Pinot Grigio</li>
+        <li>Riesling</li>
+        <li>Gewurztraminer</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>Rose Wine</h1>
+      <ul>
+        <li>R. Chardonnay</li>
+        <li>R. Sauvignon</li>
+        <li>R. Pinot Grigio</li>
+        <li>R. Riesling</li>
+        <li>R. Gewurztraminer</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>Sweet Wine</h1>
+      <ul>
+        <li>Moscato d'Asti</li>
+        <li>Sauternes</li>
+        <li>Sweet Riesling</li>
+        <li>Ice Wine</li>
+        <li>Tokaji</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>Indian Wine</h1>
+      <ul>
+        <li>Sulo Sauvignon Blanc</li>
+        <li>Grover Zampa Chardonnay</li>
+        <li>FSV</li>
+        <li>RJPG</li>
+        <li>Yerrapalli Riesling</li>
+      </ul>
+    </div>
+
+    <div>
+      <h1>France Wine</h1>
+      <ul>
+        <li>Bordeaux</li>
+        <li>Champagne</li>
+        <li>Chablis</li>
+        <li>Côtes du Rhône</li>
+        <li>Sancerre</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
